@@ -1,6 +1,5 @@
-package com.example.controller;
+package com.example.hello;
 
-import org.apache.coyote.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,39 +7,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class MyController {
+public class HelloController {
+
     @GetMapping("hello")
-    public String hello(Model model){
+    public String hello(Model model) {
         model.addAttribute("data", "hello!!!");
         return "hellosss";
     }
+
     @GetMapping("hello-mvc")
-    public String helloMVC(@RequestParam(value = "name", required = false) String name, Model model){
+    public String helloMVC(@RequestParam(value = "name", required = false) String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
     }
+
     @GetMapping("hello-string")
     @ResponseBody
-    public String helloString(@RequestParam(value = "name", required = false) String name){
-        return "hello"+name;
+    public String helloString(@RequestParam(value = "name", required = false) String name) {
+        return "hello" + name;
     }
+
     @GetMapping("hello-api")
     @ResponseBody
-    public Hello helloAPI(@RequestParam("name") String name){
+    public Hello helloAPI(@RequestParam("name") String name) {
         Hello hello = new Hello();
         hello.setName(name);
         return hello;
     }
 
-    static class Hello{
+    static class Hello {
         private String name;
 
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
     }
-
 }

@@ -1,9 +1,10 @@
-package com.example.repository;
+package com.example.member;
 
-import com.example.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
     private static final Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
@@ -22,8 +23,9 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findByName(String name) {
-        return store.values().stream().filter(
-                member -> member.getName().equals(name)).findAny();
+        return store.values().stream()
+                .filter(m -> m.getName().equals(name))
+                .findAny();
     }
 
     @Override
@@ -34,5 +36,4 @@ public class MemoryMemberRepository implements MemberRepository {
     public void clearStore() {
         store.clear();
     }
-
 }
