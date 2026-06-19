@@ -65,19 +65,7 @@ src/main/java/com/example/
 
 ---
 
-## 🏗️ 요청 흐름
 
-```
-Browser
-  └─ HTTP 요청
-       └─ DispatcherServlet
-            └─ MemberController        @Controller
-                 └─ MemberService      @Service
-                      └─ MemoryMemberRepository  @Repository
-                           └─ HashMap (인메모리 저장소)
-```
-
----
 
 ## 🎯 Git Commit Convention
 
