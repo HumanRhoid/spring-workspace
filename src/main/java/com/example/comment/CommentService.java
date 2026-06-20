@@ -1,5 +1,7 @@
 package com.example.comment;
 
+import com.example.comment.dto.CommentRequest;
+import com.example.comment.dto.CommentResponse;
 import com.example.member.Member;
 import com.example.member.MemberRepository;
 import com.example.post.Post;

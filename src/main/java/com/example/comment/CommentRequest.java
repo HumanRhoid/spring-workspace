@@ -1,7 +1,3 @@
 package com.example.comment;
 
-import jakarta.validation.constraints.NotBlank;
-
-public record CommentRequest(
-        @NotBlank(message = "내용은 필수입니다.") String content
-) {}
+// dto/ 패키지로 이동됨 → com.example.comment.dto.CommentRequest

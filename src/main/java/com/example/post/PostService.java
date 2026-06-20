@@ -2,6 +2,8 @@ package com.example.post;
 
 import com.example.member.Member;
 import com.example.member.MemberRepository;
+import com.example.post.dto.PostRequest;
+import com.example.post.dto.PostResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
