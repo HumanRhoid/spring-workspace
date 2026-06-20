@@ -1,16 +1,7 @@
 package com.example.member;
 
-// ===== 기존 코드 =====
-// @Service
-// public class MemberService {
-//     private final MemberRepository memberRepository;
-//     public MemberService(MemberRepository memberRepository) { ... }
-//     public Long join(Member member) { ... }
-//     public List<Member> findMembers() { ... }
-//     public Optional<Member> findOne(Long memberId) { ... }
-// }
-
-// ===== 최신 구조 =====
+import com.example.member.domain.Member;
+import com.example.member.domain.MemberRepository;
 import com.example.member.dto.MemberRequest;
 import com.example.member.dto.MemberResponse;
 import org.slf4j.Logger;

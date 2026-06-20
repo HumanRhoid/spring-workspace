@@ -1,6 +1,6 @@
 package com.example.comment.dto;
 
-import com.example.comment.Comment;
+import com.example.comment.domain.Comment;
 
 import java.time.LocalDateTime;
 

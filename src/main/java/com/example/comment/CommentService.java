@@ -1,11 +1,13 @@
 package com.example.comment;
 
+import com.example.comment.domain.Comment;
+import com.example.comment.domain.CommentRepository;
 import com.example.comment.dto.CommentRequest;
 import com.example.comment.dto.CommentResponse;
-import com.example.member.Member;
-import com.example.member.MemberRepository;
-import com.example.post.Post;
-import com.example.post.PostRepository;
+import com.example.member.domain.Member;
+import com.example.member.domain.MemberRepository;
+import com.example.post.domain.Post;
+import com.example.post.domain.PostRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

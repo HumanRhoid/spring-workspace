@@ -1,6 +1,6 @@
 package com.example.post.dto;
 
-import com.example.post.Post;
+import com.example.post.domain.Post;
 
 import java.time.LocalDateTime;
 

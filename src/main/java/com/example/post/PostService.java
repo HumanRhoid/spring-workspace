@@ -1,7 +1,9 @@
 package com.example.post;
 
-import com.example.member.Member;
-import com.example.member.MemberRepository;
+import com.example.member.domain.Member;
+import com.example.member.domain.MemberRepository;
+import com.example.post.domain.Post;
+import com.example.post.domain.PostRepository;
 import com.example.post.dto.PostRequest;
 import com.example.post.dto.PostResponse;
 import org.slf4j.Logger;

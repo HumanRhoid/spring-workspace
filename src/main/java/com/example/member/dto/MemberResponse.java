@@ -1,6 +1,6 @@
 package com.example.member.dto;
 
-import com.example.member.Member;
+import com.example.member.domain.Member;
 
 import java.time.LocalDateTime;
 
