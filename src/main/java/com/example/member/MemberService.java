@@ -31,6 +31,8 @@ package com.example.member;
 // }
 
 // ===== 최신 구조 =====
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,8 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class MemberService {
+    private static final Logger log = LoggerFactory.getLogger(MemberService.class);
+
     private final MemberRepository memberRepository;
 
     public MemberService(MemberRepository memberRepository) {
@@ -47,26 +51,34 @@ public class MemberService {
 
     @Transactional
     public MemberResponse join(MemberRequest request) {
+        log.info("회원 가입 요청: name={}", request.name());
         validateDuplicateMember(request.name());
         Member member = new Member(request.name());
         memberRepository.save(member);
+        log.info("회원 가입 완료: id={}, name={}", member.getId(), member.getName());
         return MemberResponse.from(member);
     }
 
     public List<MemberResponse> findMembers() {
+        log.debug("전체 회원 조회");
         return memberRepository.findAll().stream()
                 .map(MemberResponse::from)
                 .toList();
     }
 
     public MemberResponse findOne(Long id) {
+        log.debug("회원 단건 조회: id={}", id);
         Member member = memberRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+                .orElseThrow(() -> {
+                    log.warn("존재하지 않는 회원 조회 시도: id={}", id);
+                    return new IllegalArgumentException("존재하지 않는 회원입니다.");
+                });
         return MemberResponse.from(member);
     }
 
     private void validateDuplicateMember(String name) {
         memberRepository.findByName(name).ifPresent(m -> {
+            log.warn("중복 회원 가입 시도: name={}", name);
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
     }
