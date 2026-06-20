@@ -51,9 +51,9 @@ public class MemberService {
 
     @Transactional
     public MemberResponse join(MemberRequest request) {
-        log.info("회원 가입 요청: name={}", request.name());
+        log.info("회원 가입 요청: name={}, email={}", request.name(), request.email());
         validateDuplicateMember(request.name());
-        Member member = new Member(request.name());
+        Member member = new Member(request.name(), request.email(), request.password());
         memberRepository.save(member);
         log.info("회원 가입 완료: id={}, name={}", member.getId(), member.getName());
         return MemberResponse.from(member);
