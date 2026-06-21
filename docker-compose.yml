@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: springdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
